@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Yamini 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ff4d6d,#ff758f);
+    font-family:'Segoe UI',sans-serif;
+    overflow:hidden;
+}
+
+/* Floating hearts */
+.heart-float{
+    position:absolute;
+    color:rgba(255,255,255,0.5);
+    font-size:20px;
+    animation:float 6s linear infinite;
+}
+@keyframes float{
+    from{transform:translateY(100vh);}
+    to{transform:translateY(-10vh);}
+}
+
+/* Big heart */
+.heart-box{
+    position:relative;
+    width:200px;
+    height:180px;
+    cursor:pointer;
+    animation:pulse 1.5s infinite;
+}
+
+.heart{
+    position:absolute;
+    width:100px;
+    height:150px;
+    background:#ff003c;
+    border-radius:100px 100px 0 0;
+    top:0;
+    left:50px;
+    transform:rotate(-45deg);
+    transform-origin:0 100%;
+    transition:1s;
+}
+
+.heart::after{
+    content:"";
+    position:absolute;
+    width:100px;
+    height:150px;
+    background:#ff003c;
+    border-radius:100px 100px 0 0;
+    left:100px;
+    top:0;
+    transform:rotate(90deg);
+    transform-origin:0 100%;
+}
+
+.open .heart{
+    transform:rotate(-90deg) translateX(-40px);
+}
+
+@keyframes pulse{
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.05);}
+}
+
+.card{
+    position:absolute;
+    width:320px;
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+    display:none;
+    animation:pop 0.6s ease;
+}
+
+@keyframes pop{
+    from{transform:scale(0.5);opacity:0;}
+    to{transform:scale(1);opacity:1;}
+}
+
+.card h2{
+    color:#ff003c;
+}
+
+.name{
+    font-size:22px;
+    font-weight:bold;
+}
+
+.signature{
+    margin-top:10px;
+    font-weight:600;
+    color:#ff003c;
+}
+
+.btns{
+    margin-top:20px;
+    display:flex;
+    justify-content:center;
+    gap:20px;
+}
+
+button{
+    padding:10px 22px;
+    border:none;
+    border-radius:25px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+#yes{
+    background:#ff003c;
+    color:white;
+}
+
+#no{
+    background:#eee;
+}
+
+.final{
+    display:none;
+    color:white;
+    font-size:26px;
+    text-align:center;
+    animation:pop 0.8s ease;
+}
+</style>
+</head>
+<body>
+
+<div class="heart-box" id="heartBox">
+    <div class="heart"></div>
+</div>
+
+<div class="card" id="card">
+
+    <div class="name">YAMINI 🎀🧿🫶🏻</div>
+
+    <p style="margin-top:10px;">
+        You are my smile, my comfort and my favorite thought every day 🦋💕  
+        My heart chose you without any doubt…  
+        <br><br>
+        Will you be my Valentine? 🌹
+    </p>
+
+    <div class="signature">
+        – DUGGU ❤️  
+        My cutie pookiee ♾️💎  
+        Choco pie sweeety darling 😭🫶🏻
+    </div>
+
+    <div class="btns">
+        <button id="yes">Yes 💘</button>
+        <button id="no">No 🙈</button>
+    </div>
+</div>
+
+<div class="final" id="final">
+    💞 Thank you, Yamini 💞<br>
+    You mean everything to me 🦋💕
+</div>
+
+<script>
+const heartBox = document.getElementById("heartBox");
+const card = document.getElementById("card");
+const yes = document.getElementById("yes");
+const no = document.getElementById("no");
+const final = document.getElementById("final");
+
+heartBox.addEventListener("click",()=>{
+    heartBox.classList.add("open");
+    setTimeout(()=>{
+        card.style.display="block";
+    },600);
+});
+
+no.addEventListener("mouseover",()=>{
+    const x = Math.random()*(window.innerWidth-100);
+    const y = Math.random()*(window.innerHeight-50);
+    no.style.position="absolute";
+    no.style.left = x+"px";
+    no.style.top  = y+"px";
+});
+
+yes.addEventListener("click",()=>{
+    card.style.display="none";
+    heartBox.style.display="none";
+    final.style.display="block";
+});
+
+/* floating hearts */
+for(let i=0;i<20;i++){
+    const h=document.createElement("div");
+    h.className="heart-float";
+    h.innerHTML="❤";
+    h.style.left=Math.random()*100+"vw";
+    h.style.animationDuration=4+Math.random()*4+"s";
+    h.style.fontSize=14+Math.random()*20+"px";
+    document.body.appendChild(h);
+}
+</script>
+
+</body>
+</html>
